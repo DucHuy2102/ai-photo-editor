@@ -48,44 +48,71 @@ export default function Navbar() {
                 <div className='flex items-center justify-between'>
                     {/* logo */}
                     <motion.div
-                        className='flex items-center space-x-2 cursor-pointer'
-                        whileHover={{ scale: 1.05 }}
+                        className='flex items-center gap-3 cursor-pointer group'
+                        whileHover={{ scale: 1.02 }}
                         onClick={() => scrollToSection('hero')}
                     >
-                        <div className='relative'>
-                            <Sparkles
-                                fill='transparent'
-                                className='h-8 w-8 text-primary animate-glow-pulse'
+                        {/* icon logo */}
+                        <div
+                            className='relative h-10 w-10 rounded-xl p-px overflow-hidden 
+                        bg-linear-to-br from-primary/80 via-zinc-500/20 to-secondary/80 shadow-lg shadow-primary/20'
+                        >
+                            <div
+                                className='relative h-full w-full bg-zinc-950/90 rounded-xl flex items-center justify-center 
+                            backdrop-blur-xl group-hover:bg-zinc-900/90 transition-colors'
+                            >
+                                <Sparkles
+                                    fill='currentColor'
+                                    strokeWidth={0}
+                                    className='h-5 w-5 text-zinc-100 drop-shadow-[0_0_12px_rgba(var(--primary-rgb),0.6)]'
+                                />
+                            </div>
+                            <div
+                                className='absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500'
                             />
-                            <div className='absolute inset-0 h-8 w-8 text-secondary animate-glow-pulse opacity-50' />
                         </div>
-                        <span className='text-2xl font-bold bg-gradient-primary bg-clip-text! text-transparent'>
-                            Pics AI
+
+                        {/* text logo */}
+                        <span className='text-xl font-bold tracking-tight text-foreground'>
+                            Pics
+                            <span className='bg-gradient-primary bg-clip-text! text-transparent ml-1'>
+                                AI
+                            </span>
                         </span>
                     </motion.div>
 
                     {/* desktop menu button */}
-                    <div className='hidden md:flex items-center space-x-8'>
-                        <button
-                            className='text-foreground hover:text-primary transition-colors font-medium'
-                            onClick={() => scrollToSection('features')}
-                        >
-                            Features
-                        </button>
-                        <button
-                            className='text-foreground hover:text-primary transition-colors font-medium'
-                            onClick={() => scrollToSection('pricing')}
-                        >
-                            Pricing
-                        </button>
-                        <Button
-                            variant={'hero'}
-                            className={`font-semibold w-30 cursor-pointer
-                                ${session?.user ? 'text-zinc-100' : 'text-zinc-900'}`}
-                            onClick={handleSubmit}
-                        >
-                            {session?.user ? 'Launch App' : 'Sign In'}
-                        </Button>
+                    <div className='hidden md:flex items-center space-x-10'>
+                        {['Features', 'Pricing'].map((item) => (
+                            <button
+                                key={item}
+                                onClick={() => scrollToSection(item.toLowerCase())}
+                                className='group relative py-2 text-md font-medium text-zinc-400 transition-colors hover:text-zinc-100'
+                            >
+                                {item}
+                                <span
+                                    className='absolute inset-x-0 -bottom-1 h-px scale-x-0 bg-linear-to-r from-transparent via-primary to-transparent 
+                                transition-transform duration-300 group-hover:scale-x-100'
+                                />
+                            </button>
+                        ))}
+                        <div className='pl-4'>
+                            <Button
+                                variant='hero'
+                                onClick={handleSubmit}
+                                className={`
+                                    relative overflow-hidden px-8 py-5 font-semibold transition-all duration-300
+                                    hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
+                                    active:scale-95 cursor-pointer
+                                    ${session?.user ? 'bg-zinc-100 text-zinc-900' : 'bg-primary text-primary-foreground'}
+                                `}
+                            >
+                                <span className='relative z-10 flex items-center gap-2'>
+                                    {session?.user ? 'Launch App' : 'Sign In'}
+                                </span>
+                            </Button>
+                        </div>
                     </div>
 
                     {/* hamburger icon for mobile*/}
@@ -110,27 +137,36 @@ export default function Navbar() {
                     }}
                     className='md:hidden overflow-hidden'
                 >
-                    <div className='py-4 flex items-center space-x-4'>
-                        <button
-                            className='block w-full text-left text-foreground hover:text-primary transition-colors font-medium'
-                            onClick={() => scrollToSection('features')}
-                        >
-                            Features
-                        </button>
-                        <button
-                            className='block w-full text-left text-foreground hover:text-primary transition-colors font-medium'
-                            onClick={() => scrollToSection('pricing')}
-                        >
-                            Pricing
-                        </button>
-                        <Button
-                            variant={'hero'}
-                            className={`font-semibold w-24 cursor-pointer
-                                ${session?.user ? 'text-zinc-100' : 'text-zinc-900'}`}
-                            onClick={handleSubmit}
-                        >
-                            {session?.user ? 'Launch App' : 'Sign In'}
-                        </Button>
+                    <div className='py-4 flex items-center justify-between px-3'>
+                        {['Features', 'Pricing'].map((item) => (
+                            <button
+                                key={item}
+                                onClick={() => scrollToSection(item.toLowerCase())}
+                                className='group relative py-2 text-md font-medium text-zinc-400 transition-colors hover:text-zinc-100'
+                            >
+                                {item}
+                                <span
+                                    className='absolute inset-x-0 -bottom-1 h-px scale-x-0 bg-linear-to-r from-transparent via-primary to-transparent 
+                                transition-transform duration-300 group-hover:scale-x-100'
+                                />
+                            </button>
+                        ))}
+                        <div className='pl-4'>
+                            <Button
+                                variant='hero'
+                                onClick={handleSubmit}
+                                className={`
+                                    relative overflow-hidden px-8 py-5 font-semibold transition-all duration-300
+                                    hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
+                                    active:scale-95 cursor-pointer
+                                    ${session?.user ? 'bg-zinc-100 text-zinc-900' : 'bg-primary text-primary-foreground'}
+                                `}
+                            >
+                                <span className='relative z-10 flex items-center gap-2'>
+                                    {session?.user ? 'Launch App' : 'Sign In'}
+                                </span>
+                            </Button>
+                        </div>
                     </div>
                 </motion.div>
             </div>
