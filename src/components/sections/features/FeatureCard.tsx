@@ -17,7 +17,6 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ feature, index }: FeatureCardProps) {
     const { icon: Icon, title, description, color, gradient, footerText, cta } = feature;
-    console.log({ color });
 
     return (
         <motion.div
@@ -27,7 +26,7 @@ export default function FeatureCard({ feature, index }: FeatureCardProps) {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             style={{ '--card-color': color, '--card-gradient': gradient } as React.CSSProperties}
             className='group relative h-full overflow-hidden rounded-4xl border border-white/10 
-            bg-white/3 p-px transition-all duration-500 hover:border-white/20'
+            bg-white/3 p-px transition duration-500 hover:border-white/20'
         >
             {/* border beam */}
             <div className='absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500'>
@@ -39,7 +38,7 @@ export default function FeatureCard({ feature, index }: FeatureCardProps) {
 
             {/* card content */}
             <div
-                className='relative z-10 h-full w-full overflow-hidden rounded-[1.95rem] p-8 transition-all duration-500 
+                className='relative z-10 h-full w-full overflow-hidden rounded-[1.95rem] p-8 transition duration-500 
                 bg-zinc-900/80 backdrop-blur-md group-hover:bg-[color-mix(in_srgb,var(--card-color)_5%,#09090b)]'
             >
                 <div className='absolute inset-0 bg-noise opacity-[0.05] pointer-events-none' />
@@ -47,7 +46,7 @@ export default function FeatureCard({ feature, index }: FeatureCardProps) {
                 {/* icon */}
                 <div className='relative mb-8 flex h-14 w-14 items-center justify-center'>
                     <div
-                        className='absolute inset-0 opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-60 group-hover:scale-150'
+                        className='absolute inset-0 opacity-20 blur-2xl transition duration-500 group-hover:opacity-60 group-hover:scale-150'
                         style={{ backgroundColor: color }}
                     />
                     <div
@@ -89,17 +88,20 @@ export default function FeatureCard({ feature, index }: FeatureCardProps) {
                             &quot;{footerText}&quot;
                         </span>
                     </div>
-
                     <button
-                        className='relative flex items-center justify-center h-10 w-10 rounded-full overflow-hidden
-                    bg-white/5 border border-white/10 text-white transition-all duration-300 cursor-pointer
-                    group-hover:w-34 group-hover:bg-(--card-color) group-hover:border-transparent group-hover:shadow-[0_0_20px_rgba(var(--card-color),0.3)]'
+                        className='flex items-center justify-center h-10 w-10 rounded-full overflow-hidden
+                        bg-white/5 border border-white/10 text-white transition-all duration-500 cursor-pointer
+                        group-hover:w-36 group-hover:bg-(--card-color) group-hover:border-transparent 
+                        group-hover:shadow-[0_0_20px_rgba(var(--card-color),0.3)]'
                     >
-                        <div className='absolute inset-0 flex items-center justify-center gap-1 group-hover:px-4'>
-                            <span className='opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold whitespace-nowrap'>
+                        <div className='flex items-center justify-center whitespace-nowrap px-3'>
+                            <span
+                                className='max-w-0 group-hover:max-w-xs opacity-0 group-hover:opacity-100 group-hover:mr-2 
+                            transition-all duration-300 text-xs font-bold overflow-hidden'
+                            >
                                 {cta}
                             </span>
-                            <ArrowUpRight className='h-4 w-4 transition-transform group-hover:rotate-45' />
+                            <ArrowUpRight className='h-4 w-4 shrink-0 transition-transform group-hover:rotate-45' />
                         </div>
                     </button>
                 </div>

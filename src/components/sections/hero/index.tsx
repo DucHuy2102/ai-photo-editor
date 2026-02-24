@@ -104,7 +104,7 @@ export default function HeroSection() {
                             className='group text-white cursor-pointer w-full sm:w-50'
                         >
                             Launch App
-                            <ArrowRight className='h-5 w-5 group-hover:translate-x-1 transition-all duration-200' />
+                            <ArrowRight className='h-5 w-5 group-hover:translate-x-1 transition-transform duration-200' />
                         </Button>
                     </motion.div>
 

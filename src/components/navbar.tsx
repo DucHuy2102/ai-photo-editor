@@ -105,7 +105,7 @@ export default function Navbar() {
                                 variant='hero'
                                 onClick={handleSubmit}
                                 className={`
-                                    relative overflow-hidden px-8 py-5 font-semibold transition-all duration-300
+                                    relative overflow-hidden px-8 py-5 font-semibold transition duration-300
                                     hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                                     active:scale-95 cursor-pointer
                                     ${session?.user ? 'bg-zinc-100 text-zinc-900' : 'bg-primary text-primary-foreground'}
@@ -159,7 +159,7 @@ export default function Navbar() {
                                 variant='hero'
                                 onClick={handleSubmit}
                                 className={`
-                                    relative overflow-hidden px-8 py-5 font-semibold transition-all duration-300
+                                    relative overflow-hidden px-8 py-5 font-semibold transition duration-300
                                     hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]
                                     active:scale-95 cursor-pointer
                                     ${session?.user ? 'bg-zinc-100 text-zinc-900' : 'bg-primary text-primary-foreground'}
