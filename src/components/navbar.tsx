@@ -13,6 +13,10 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
+            setIsMobileMenuOpen((isOpenMobileMenu) => {
+                if (isOpenMobileMenu) return false;
+                return isOpenMobileMenu;
+            });
         };
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -40,9 +44,8 @@ export default function Navbar() {
         <motion.nav
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
-                ${isScrolled ? 'shadow-glass border-b border-card-border backdrop-blur-glass' : 'bg-transparent'}
-              `}
+            className={`fixed top-0 inset-x-0 z-50 transition-colors duration-200
+                ${isScrolled ? 'bg-zinc-950/70 backdrop-blur-lg' : 'bg-transparent'}`}
         >
             <div className='container mx-auto px-10 py-4'>
                 <div className='flex items-center justify-between'>

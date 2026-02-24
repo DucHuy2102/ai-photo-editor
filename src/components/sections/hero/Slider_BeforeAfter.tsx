@@ -120,7 +120,8 @@ export default function Slider_BeforeAfter() {
             {/* label - disapear when the slider is at the edge */}
             {/* before label */}
             <motion.div
-                className='absolute -left-25 -top-10 hidden md:flex flex-col gap-3 items-center text-primary-glow'
+                className='absolute md:-left-8 md:-top-22 lg:-left-25 lg:-top-10 hidden md:flex flex-col gap-3 
+                items-center text-primary-glow'
                 style={{ opacity: sliderPosition / 100 }}
                 animate={{ y: isDragging ? 5 : 0 }}
             >
@@ -130,7 +131,8 @@ export default function Slider_BeforeAfter() {
 
             {/* after label */}
             <motion.div
-                className='absolute right-0 -bottom-14 flex items-center justify-center gap-3 text-secondary-glow'
+                className='absolute right-0 md:-bottom-3 lg:-bottom-7 hidden md:flex items-center 
+                justify-center gap-3 text-secondary-glow'
                 style={{ opacity: (100 - sliderPosition) / 100 }}
                 animate={{ y: isDragging ? 5 : 0 }}
             >
